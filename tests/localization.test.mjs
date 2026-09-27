@@ -31,3 +31,20 @@ test('concept pages stay illustrative and checkout cannot submit an order',async
   assert.match(config,/luybeingvgdkcsegxbbh/);
   assert.match(config,/mode: 'preview'/);
 });
+
+test('Arabic share routes use the Arabic 1200 × 630 social image',async()=>{
+  const image=await readFile('assets/og-ar.jpg');
+  assert.equal(image[0],0xff);
+  assert.equal(image[1],0xd8);
+  for(const path of ['index.html','cart.html','checkout.html',...concepts.map(item=>`products/${item.slug}/index.html`)]){
+    const html=await readFile(`dist/ar/${path}`,'utf8');
+    assert.match(html,/property="og:image" content="https:\/\/bukhoor-store\.vercel\.app\/assets\/og-ar\.jpg"/);
+    assert.match(html,/name="twitter:image" content="https:\/\/bukhoor-store\.vercel\.app\/assets\/og-ar\.jpg"/);
+    assert.match(html,/property="og:image:width" content="1200"/);
+    assert.match(html,/property="og:image:height" content="630"/);
+    assert.match(html,/property="og:locale" content="ar_AE"/);
+    assert.match(html,/property="og:image:alt" content="متجر بخور/);
+  }
+  const english=await readFile('dist/index.html','utf8');
+  assert.match(english,/property="og:image" content="https:\/\/bukhoor-store\.vercel\.app\/assets\/hero-bukhoor\.png"/);
+});

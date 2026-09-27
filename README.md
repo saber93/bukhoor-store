@@ -14,4 +14,6 @@ python3 -m http.server 8000 --directory dist
 
 Open `/` for English and `/ar/` for Arabic. Product pages are under `/products/<slug>/` and `/ar/products/<slug>/`; the bag and checkout preview also exist in both languages. Every preview page requests `noindex`. The Vercel configuration publishes the generated `dist/` directory. Add the actual products and photography before opening orders or search indexing.
 
+Arabic routes share the branded [Arabic Open Graph image](assets/og-ar.jpg). English routes use the existing hero image. The build defaults to `https://bukhoor-store.vercel.app` for absolute social image and page URLs; set `PUBLIC_SITE_URL` during build if the production domain changes.
+
 The separate Admin/backend code is in `/Users/me/Downloads/bukhoor-admin`. The existing Élan projects are independent.
