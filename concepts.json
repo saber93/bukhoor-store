@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "wood-chip-bakhoor",
+    "category": "bakhoor",
+    "title": "Wood-chip bakhoor",
+    "description": "A familiar way to scent the home.",
+    "image": "/assets/concept-bakhoor.png",
+    "detail": "An illustrative look at a classic home fragrance ritual. This page demonstrates how a future verified product would be presented.",
+    "moment": "For a welcoming space",
+    "note": "Warm, familiar atmosphere"
+  },
+  {
+    "slug": "oud-wood",
+    "category": "oud",
+    "title": "Oud wood",
+    "description": "Explore the character of oud.",
+    "image": "/assets/concept-oud.png",
+    "detail": "An illustrative oud concept showing the visual language planned for the collection. Product origin, grade and scent profile are still to be confirmed.",
+    "moment": "For an unhurried ritual",
+    "note": "Wood-inspired mood"
+  },
+  {
+    "slug": "incense-cones",
+    "category": "incense",
+    "title": "Incense cones",
+    "description": "A simple form for everyday fragrance.",
+    "image": "/assets/concept-cones.png",
+    "detail": "An illustrative format for a compact incense product page. The actual contents, burn guidance and fragrance notes will be added for the real listing.",
+    "moment": "For everyday pauses",
+    "note": "Simple, considered form"
+  }
+]

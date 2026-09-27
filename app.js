@@ -2,6 +2,7 @@
   const {t,money,locale} = window.BukhoorI18n;
   const config = window.BUKHOOR_CONFIG;
   const grid = document.getElementById('product-grid');
+  const home = locale === 'ar' ? '/ar/' : '/';
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   let items = window.BUKHOOR_CONCEPTS.map(item => ({...item,illustrative:true}));
   let filter = 'all';
@@ -10,9 +11,9 @@
     grid.innerHTML = matching.length ? matching.map(item => {
       const title = item.illustrative ? t(item.title) : locale === 'ar' && item.name_ar ? item.name_ar : item.name;
       const description = item.illustrative ? t(item.description) : locale === 'ar' && item.description_ar ? item.description_ar : item.description;
-      const image = item.image;
-      const price = item.illustrative ? t('Product details coming soon') : money(item.price_minor);
-      return `<article class="product-card"><img src="${escape(image)}" alt="${escape(title)}" loading="lazy"><div class="product-copy"><small>${escape(t(item.illustrative || item.fixture ? 'ILLUSTRATIVE EXAMPLE' : 'Bukhoor Store'))}</small><h3 dir="auto">${escape(title)}</h3><p dir="auto">${escape(description)}</p><span>${escape(price)}</span></div></article>`;
+      const price = item.illustrative ? t('Illustrative example — price pending') : money(item.price_minor);
+      const href = item.illustrative ? `${home}products/${escape(item.slug)}/` : '#collection';
+      return `<article class="product-card"><a href="${href}" aria-label="${escape(`${t('View details')}: ${title}`)}"><img src="${escape(item.image)}" alt="${escape(title)}" loading="lazy"><div class="product-copy"><small>${escape(t(item.illustrative || item.fixture ? 'ILLUSTRATIVE EXAMPLE' : 'Bukhoor Store'))}</small><h3 dir="auto">${escape(title)}</h3><p dir="auto">${escape(description)}</p><span>${escape(price)} <b>${escape(t('View details'))} ↗</b></span></div></a></article>`;
     }).join('') : `<p class="empty-state">${escape(t('No concepts in this category yet.'))}</p>`;
   }
   document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
